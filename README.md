@@ -1,4 +1,4 @@
-# Hok: Higher-Order GPU kernels in Elixir
+# Schok: Statically Compiled Higher-Order GPU kernels in Elixir
 
 **A DSL for GPU programming in Elixir**
 
