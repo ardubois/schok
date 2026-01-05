@@ -13,7 +13,7 @@ defmodule Mix.Tasks.Compile.MyTask do
     end
     def compile_module({id,type}) do
       
-      app = get_app()
+      app = Hok.get_app()
  
       code = Hok.CudaBackend.compile_module(:app, app, type)
       module_name = "Elixir.app_#{to_string(id)}"
