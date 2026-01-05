@@ -36,7 +36,7 @@ defmodule Mix.Tasks.Compile.MyTask do
    end
    
    lib=Hok.load_lib_nif(to_charlist(module_name))
-   add_lib_server(to_charlist(module_name),lib)
+   Hok.add_lib_server(to_charlist(module_name),lib)
     
   
 
