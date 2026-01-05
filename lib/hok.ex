@@ -296,6 +296,7 @@ end
     IO.puts("Compiling Generated CUDA code for Hok application!!!")
     Hok.get_default_type()
     |> Enum.map(fn v -> compile_module_macro(v) end)
+    quote do: :ok
   end
   def compile_module_macro({id,type}) do
       
