@@ -152,9 +152,11 @@ r2 = NBodies.map_2_para_no_resp( r1, 0.01,nBodies,nBodies, &NBodies.gpu_integrat
   |> Hok.get_gnx
   #|> IO.inspect
 
+Hok.end_hok
   next = System.monotonic_time()
 
-IO.puts "Hok\t#{user_value}\t#{System.convert_time_unit(next-prev,:native,:millisecond)}"
+
+  IO.puts "Hok\t#{user_value}\t#{System.convert_time_unit(next-prev,:native,:millisecond)}"
 
 #IO.inspect gpu_resp
 
