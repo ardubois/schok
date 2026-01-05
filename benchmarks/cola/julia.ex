@@ -89,6 +89,8 @@ _image = result_gpu
   |> Julia.mapgen2D_step_xy_1para_noret(dim,dim, &Julia.julia_function/4)
   |> Hok.get_gnx
 
+Hok.end_hok  
+
 next = System.monotonic_time()
 
 IO.puts "PolyHok\t#{dim}\t#{System.convert_time_unit(next-prev,:native,:millisecond)}"
