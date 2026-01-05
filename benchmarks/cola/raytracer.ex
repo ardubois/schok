@@ -182,7 +182,8 @@ defmodule Main do
        # Hok.spawn_jit(&RayTracer.raytracing/4,{trunc(width/16),trunc(height/16),1},{16,16,1},[width, height, refSphere, refImag])
 
         _image = Hok.get_gnx(ref_image)
-
+        
+        Hok.end_hok
         next = System.monotonic_time()
         IO.puts "Hok\t#{width}\t#{System.convert_time_unit(next-prev,:native,:millisecond)} "
 
