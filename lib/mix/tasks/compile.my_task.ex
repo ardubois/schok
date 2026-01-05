@@ -7,7 +7,7 @@ defmodule Mix.Tasks.Compile.MyTask do
     def run(_args) do
       IO.puts("Compiling Generated CUDA code for Hok application!!!")
       Hok.get_default_type()
-      |> Map.map(fn v -> compile_module(v) end)
+      |> Enum.map(fn v -> compile_module(v) end)
       # Your custom execution logic here
       :ok
     end
