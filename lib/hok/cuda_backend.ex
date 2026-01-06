@@ -318,7 +318,7 @@ end
     end
 
     delta = Map.put(delta,:return,fun_type)
-    #IO.puts "function: #{fname}"
+    IO.puts "function: #{fname}"
 
      #IO.inspect delta
     #IO.inspect body
