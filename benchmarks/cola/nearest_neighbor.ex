@@ -154,6 +154,7 @@ Hok.defmodule_rts NN do
       Hok.spawn(&NN.map_step_2para_1resp_kernel/7,{size,1,1},{1,1,1},[d_array,distances_device,step,par1,par2,size,f])
       distances_device
   end
+  deft euclid (arr b) ~> b ~> b ~> b
   defd euclid(d_locations, lat, lng) do
     return sqrt((lat-d_locations[0])*(lat-d_locations[0])+(lng-d_locations[1])*(lng-d_locations[1]))
       #return sqrt((lat-d_locations[0])*(lat-d_locations[0])+(lng-d_locations[1])*(lng-d_locations[1]))
