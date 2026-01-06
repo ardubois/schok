@@ -184,7 +184,7 @@ data_set_host = DataSet.gen_data_set_nx_double(size)
 
 prev = System.monotonic_time()
 
-Hok.include_rts [DP]
+Hok.include_rts [NN]
 Hok.set_default_type(%{default:  :double, a: :double, b: :double, c: :double, d: :double })
 
 _r= Hok.new_gnx(data_set_host)
