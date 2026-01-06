@@ -94,7 +94,7 @@ Hok.defmodule_rts NN do
      threadsPerBlock = 256
      blocksPerGrid = div(size + threadsPerBlock - 1, threadsPerBlock)
      numberOfBlocks = blocksPerGrid
-     Hok.spawn(&NN.reduce_kernel/4,{numberOfBlocks,1,1},{threadsPerBlock,1,1},[ref, result_gpu, f, size])
+     Hok.spawn_rts(&NN.reduce_kernel/4,{numberOfBlocks,1,1},{threadsPerBlock,1,1},[ref, result_gpu, f, size])
      result_gpu
  end
  deft reduce_kernel (arr b) ~> (arr b) ~> [b ~> b ~> b ] ~> integer
@@ -151,7 +151,7 @@ Hok.defmodule_rts NN do
     type = Hok.get_type_gnx(d_array)
 
       distances_device = Hok.new_gnx(1,size, type)
-      Hok.spawn(&NN.map_step_2para_1resp_kernel/7,{size,1,1},{1,1,1},[d_array,distances_device,step,par1,par2,size,f])
+      Hok.spawn_rts(&NN.map_step_2para_1resp_kernel/7,{size,1,1},{1,1,1},[d_array,distances_device,step,par1,par2,size,f])
       distances_device
   end
   deft euclid (arr b) ~> b ~> b ~> b
