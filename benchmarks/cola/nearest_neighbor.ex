@@ -159,7 +159,7 @@ Hok.defmodule_rts NN do
     return sqrt((lat-d_locations[0])*(lat-d_locations[0])+(lng-d_locations[1])*(lng-d_locations[1]))
       #return sqrt((lat-d_locations[0])*(lat-d_locations[0])+(lng-d_locations[1])*(lng-d_locations[1]))
     end
-  deft menor b -> b ~> b 
+  deft menor b ~> b ~> b 
   defd menor(x,y) do
     if (x<y) do
       x
