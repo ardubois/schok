@@ -62,15 +62,15 @@ end
         _   -> compile_definitions(module_name,[body])
     end
 
-    send(pid,{:get_map,self()})
+    #send(pid,{:get_map,self()})
 
-    {map_types,map_asts} = receive do
-      {:map,{map_types,map_asts}} -> {map_types,map_asts}
-      _     -> raise "unknown message for function type server."
-    end
+    #{map_types,map_asts} = receive do
+    #  {:map,{map_types,map_asts}} -> {map_types,map_asts}
+    #  _     -> raise "unknown message for function type server."
+    #end
 
-    File.write!("c_src/Elixir.#{module_name}.types", :erlang.term_to_binary(map_types))
-    File.write!("c_src/Elixir.#{module_name}.asts", :erlang.term_to_binary(map_asts))
+    #File.write!("c_src/Elixir.#{module_name}.types", :erlang.term_to_binary(map_types))
+    #File.write!("c_src/Elixir.#{module_name}.asts", :erlang.term_to_binary(map_asts))
     Process.unregister(:types_ast_server)
     send(pid,{:kill})
     code

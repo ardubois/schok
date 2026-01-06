@@ -29,6 +29,13 @@ defmodule Hok.TypeInference do
       types
     end
   end
+
+  #################################
+  #######
+  ####### State server for the type inference algorithm. the ideia is that, if we cant infer types, 
+  # then type inference becomes eager and starts using default types
+  ###
+  ###################
   defp not_infered([]), do: []
   defp not_infered([h|t]) do
     case h do
@@ -143,7 +150,7 @@ defmodule Hok.TypeInference do
                {:default_type, type} -> if (is_atom(type)) do
                                             type
                                         else
-                                          IO.inspect type
+                                         # IO.inspect type
                                           case type[:default] do
                                             nil -> case type[:a] do
                                                     nil -> raise "Error in type inference, no default type defined!"
@@ -712,11 +719,18 @@ end
         {op, _, _args} when op in [ :<=, :<, :>, :>=, :&&, :||, :!,:!=,:==] ->
           :int
         {var, _, nil} when is_atom(var) ->
-          if (Map.get(map,var)==nil) do
-            raise "Error: variable #{inspect var} is used in expression before being declared"
-          else
-            Map.get(map,var)
+          case map[var] do
+            nil -> raise "Error: variable #{inspect var} is used in expression before being declared" 
+           :none -> type = get_default_type()
+                    type 
+            
+            ttt -> ttt
           end
+         # if (Map.get(map,var)==nil) do
+         #   raise "Error: variable #{inspect var} is used in expression before being declared" 
+         # else
+         #   Map.get(map,var)
+         # end
         :unit -> :unit
         {fun, _, _args} ->
             #IO.puts "aqui"
