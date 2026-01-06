@@ -184,6 +184,7 @@ defmodule Main do
         _image = Hok.get_gnx(ref_image)
         
         Hok.end_hok
+        
         next = System.monotonic_time()
         IO.puts "Hok\t#{width}\t#{System.convert_time_unit(next-prev,:native,:millisecond)} "
 

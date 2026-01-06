@@ -165,6 +165,8 @@ _result = ref1
 
 #IO.inspect result
 
+Hok.end_hok 
+
 next = System.monotonic_time()
 
 
