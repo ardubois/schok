@@ -473,23 +473,26 @@ defp set_type_exp(map,type,exp) do
             #if(type != :int && type != :float) do
              # raise "Operaotr11 (#{inspect op}) (#{inspect info}) is being used in a context #{inspect type}"
             #end
-            t1 = find_type_exp(map,a1)
-            t2 = find_type_exp(map,a2)
-            case t1 do
-                :none ->
-                    map = set_type_exp(map,type,a1)
-                    case t2 do
-                       :none -> set_type_exp(map,type,a2)
-                       _     -> set_type_exp(map,t2,a2)
-                    end
-                _->
-                  map = set_type_exp(map,t1,a1)
-                  case t2 do
-                    :none -> set_type_exp(map,type,a2)
-                    _     -> set_type_exp(map,t2,a2)
-                  end
+            case type do
+              :int -> set_type_exp(map,type,a1)
+                      set_type_exp(map,type,a1)
+              _ ->    t1 = find_type_exp(map,a1)
+                      t2 = find_type_exp(map,a2)
+                      case t1 do
+                          :none ->
+                                   map = set_type_exp(map,type,a1)
+                                   case t2 do
+                                    :none -> set_type_exp(map,type,a2)
+                                    _     -> set_type_exp(map,t2,a2)
+                                   end
+                           _->
+                                map = set_type_exp(map,t1,a1)
+                                case t2 do
+                                  :none -> set_type_exp(map,type,a2)
+                                  _      -> set_type_exp(map,t2,a2)
+                                end
+                       end
               end
-          end
       {op, info, [arg1,arg2]} when op in [:!=,:==] ->
         if(type != :int)  do
           raise "Operaotr (#{inspect op}) (#{inspect info}) is being used in a context #{inspect type}"
