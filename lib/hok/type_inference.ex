@@ -475,7 +475,7 @@ defp set_type_exp(map,type,exp) do
             #end
             case type do
               :int -> map=set_type_exp(map,type,a1)
-                      set_type_exp(map,type,a1)
+                      set_type_exp(map,type,a2)
               _ ->    t1 = find_type_exp(map,a1)
                       t2 = find_type_exp(map,a2)
                       case t1 do
