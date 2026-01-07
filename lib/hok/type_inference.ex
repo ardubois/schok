@@ -474,7 +474,7 @@ defp set_type_exp(map,type,exp) do
              # raise "Operaotr11 (#{inspect op}) (#{inspect info}) is being used in a context #{inspect type}"
             #end
             case type do
-              :int -> set_type_exp(map,type,a1)
+              :int -> map=set_type_exp(map,type,a1)
                       set_type_exp(map,type,a1)
               _ ->    t1 = find_type_exp(map,a1)
                       t2 = find_type_exp(map,a2)
