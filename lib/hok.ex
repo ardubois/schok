@@ -54,7 +54,7 @@ defmodule Hok do
 
   defmacro gpufor({:<-,_, [var1, {:..,_, [_b1, e1]}]}, {:<-,_, [var2, {:..,_, [_b2, e2]}]},arr1,arr2, par3, do: body) do
        r=      quote do: MM.comp2xy2D1p(unquote(arr1), unquote(arr2), unquote(par3), unquote(e1), unquote(e2),
-                                          Hok.hok (fn (unquote(arr1),
+                                          Hok.hok_rts (fn (unquote(arr1),
                                                        unquote(arr2),
                                                        unquote(par3),
                                                        unquote(var1),
