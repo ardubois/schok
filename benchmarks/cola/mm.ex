@@ -3,7 +3,7 @@ require Hok
 
 Hok.defmodule_rts MM do
 
-deft map2xy2D_kernel (arr a) ~> (arr b) ~> c ~> (arr d) ~> integer ~> [(arr a) ~> (arr b) ~> c ~> integer ~> integer]
+deft map2xy2D_kernel (arr a) ~> (arr b) ~> c ~> (arr d) ~> integer ~> [(arr a) ~> (arr b) ~> c ~> integer ~> integer ~> d]
 defk map2xy2D_kernel(arr1,arr2,par, resp,size,f) do
   row  = blockIdx.y * blockDim.y + threadIdx.y
   col = blockIdx.x * blockDim.x + threadIdx.x
