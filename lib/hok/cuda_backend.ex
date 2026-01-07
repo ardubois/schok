@@ -321,10 +321,10 @@ end
     #IO.puts "function: #{fname}"
 
      #IO.inspect delta
-    #IO.inspect body
-    #IO.puts "##############################"
+    IO.inspect body
+    IO.puts "##############################"
     body = Hok.TypeInference.add_return(delta,body)
-    #IO.inspect body 
+    IO.inspect body 
     inf_types = Hok.TypeInference.type_check(delta,body)
 
      #IO.puts "Inf types: #{inspect inf_types}"
