@@ -106,7 +106,7 @@ defmodule Hok.TypeInference do
               
     end
   end
-  defp check_return(com) do
+  defp check_return(com) when not is_list(com) do
     case com do
           {:return,_,_} -> com
           {:if, info, [ exp,[do: block]]} -> {:if, info, [ exp,[do: check_return block]]}
