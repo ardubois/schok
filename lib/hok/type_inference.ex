@@ -493,6 +493,7 @@ defp set_type_exp(map,type,exp) do
                                 end
                        end
               end
+            end    
       {op, info, [arg1,arg2]} when op in [:!=,:==] ->
         if(type != :int)  do
           raise "Operaotr (#{inspect op}) (#{inspect info}) is being used in a context #{inspect type}"
