@@ -61,7 +61,7 @@ mat2 = Hok.new_nx_from_function(m,m,{:f,32},fn -> :rand.uniform(1000) end)
 prev = System.monotonic_time()
 
 Hok.include_rts [MM]
-Hok.set_default_type(%{default:  :float, a: :float, b: :float, c: :integer, d: :float })
+Hok.set_default_type(%{default:  :float, a: :float, b: :float, c: :int, d: :float })
 
 _result = Hok.gpufor x <- 0..m, y <- 0..m, mat1, mat2,m do
             sum = 0.0
