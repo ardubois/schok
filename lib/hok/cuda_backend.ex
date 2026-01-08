@@ -320,14 +320,14 @@ end
     delta = Map.put(delta,:return,fun_type)
     #IO.puts "function: #{fname}"
 
-     IO.inspect delta
+    # IO.inspect delta
     #IO.inspect body
-    IO.puts "##############################"
+   # IO.puts "##############################"
     body = Hok.TypeInference.add_return(delta,body)
     #IO.inspect body 
     inf_types = Hok.TypeInference.type_check(delta,body)
 
-     IO.puts "Inf types: #{inspect inf_types}"
+     #IO.puts "Inf types: #{inspect inf_types}"
     
 
     fun_type = if is_typed do fun_type else Map.get(inf_types,:return) end
@@ -377,7 +377,7 @@ defp type_to_list({:~>,_, [a1,a2]}), do: type_to_list(a1) ++ type_to_list(a2)
 defp type_to_list({:arr,_,[arg]}) do
  # next = type_to_list(arg)
  # IO.puts "arg Arr #{inspect arg}"
- IO.puts "Arg: #{inspect arg}"
+ #IO.puts "Arg: #{inspect arg}"
  case arg do
   {:integer,_,_} -> [:tint]
   {:float ,_,_}-> [:tfloat]
