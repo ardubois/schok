@@ -66,9 +66,9 @@ defd raytracing(image, width,  spheres ,x,y) do
     end
   end
 
-  image[0] = r * 255
-  image[1] = g * 255
-  image[2] = b * 255
+  image[0] = to_int(r * 255)
+  image[1] = to_int(g * 255)
+  image[2] = to_int(b * 255)
   image[3] = 255
   return :unit
 
