@@ -150,7 +150,7 @@ end
     {fname, iinfo, para} = header
     {delta,is_typed}  = if(is_tuple(type_def)) do
         types = get_type_fun(type_def)
-        IO.puts "type: #{inspect types}"
+        #IO.puts "type: #{inspect types}"
         #IO.inspect type_def
         #IO.inspect types
         delta= para

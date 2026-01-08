@@ -235,7 +235,7 @@ defmodule Hok do
       lib = Hok.get_lib_server(to_charlist(m_name))
  
       kernel_name = to_string(f_name)
-      IO.puts "kernel name: #{inspect kernel_name}"
+     # IO.puts "kernel name: #{inspect kernel_name}"
       k=Hok.load_kernel_from_lib_nif(to_charlist(m_name),to_charlist(kernel_name),lib)
       args = Hok.process_args_lib(l,lib)
       IO.inspect args
