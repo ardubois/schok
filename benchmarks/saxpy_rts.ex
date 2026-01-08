@@ -71,6 +71,7 @@ _result = Hok.get_gnx(ref3)
 
 #result_ = Hok.get_gnx(ref_3)
 
+Hok.end_hok
 
 next = System.monotonic_time()
 IO.puts "Hok\t#{n}\t#{System.convert_time_unit(next-prev,:native,:millisecond)}"
