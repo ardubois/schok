@@ -606,7 +606,7 @@ def gen_cuda_jit(body,types,param_vars,module,subs) do
    # raise "hell"
   # IO.puts "gen_cuda"
   # IO.inspect param_vars
-  IO.puts subs
+  IO.inspect subs
     pid = spawn_link(fn -> types_server(param_vars,types,module,subs) end)
     Process.register(pid, :types_server)
     code = gen_body(body)
