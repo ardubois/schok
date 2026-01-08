@@ -76,7 +76,7 @@ defmodule Hok do
       #IO.inspect body
       {:__aliases__, _, [module_name]} = header
       #IO.puts "ioooooooooooooooooooooooooooooooooo"
-      IO.inspect module_name
+      #IO.inspect module_name
       #raise "hell"
       process_module(module_name,body)
   
@@ -238,10 +238,10 @@ defmodule Hok do
      # IO.puts "kernel name: #{inspect kernel_name}"
       k=Hok.load_kernel_from_lib_nif(to_charlist(m_name),to_charlist(kernel_name),lib)
       args = Hok.process_args_lib(l,lib)
-      IO.inspect args
+      #IO.inspect args
       Hok.spawn_nif(k,t,b,args)
 
-      IO.puts "Ok!"
+      #IO.puts "Ok!"
 end
 
 
@@ -338,7 +338,7 @@ end
     true ->   {real_map, _binding} = Code.eval_quoted(type)
            real_map 
   end
-  IO.puts "compiling......."
+ # IO.puts "compiling......."
   id = get_module_id()
   set_default_type_server({id,type})
   
