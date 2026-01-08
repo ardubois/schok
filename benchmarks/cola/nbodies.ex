@@ -148,7 +148,7 @@ r1 = NBodies.map_2_para_no_resp(d_buf,d_buf,nBodies,nBodies, &NBodies.gpu_nBodie
 
 Hok.set_default_type(%{default: :double, a: :double, b: :double, c: :int })
 
-r2 = NBodies.map_2_para_no_resp( r1, 0.01,nBodies,nBodies, &NBodies.gpu_integrate/3)
+_r2 = NBodies.map_2_para_no_resp( r1, 0.01,nBodies,nBodies, &NBodies.gpu_integrate/3)
   |> Hok.get_gnx
   #|> IO.inspect
 
