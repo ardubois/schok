@@ -13,7 +13,7 @@ vet1 = Hok.new_nx_from_function(1,m,{:f,32},fn -> 1.0 end)
 
 ref1 = Hok.new_gnx(vet1)
 
-resp = Ske.map(ref1, Hok.hok_rts fn a -> a +1 end)
+resp = Ske.map(ref1, Hok.hok_rts fn a -> a+1 end)
 
 Hok.end_hok
 
