@@ -91,7 +91,7 @@ defmodule Hok do
     def process_module(module_name,body) do
 
       # initiate server that collects types and asts
-      IO.inspect "io"
+      #IO.inspect "io"
       start_module_server()
        
       _defs=case body do
@@ -105,7 +105,7 @@ defmodule Hok do
     ############################
     def start_module_server() do
       if (Process.whereis(:module_server) == nil) do
-        IO.puts "IO2"
+       # IO.puts "IO2"
         pid = spawn_link(fn -> module_server(%{}, %{},[],[],0,0) end)
         try do
              Process.register(pid, :module_server)
