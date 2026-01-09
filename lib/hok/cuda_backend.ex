@@ -19,7 +19,7 @@ defmodule Hok.CudaBackend do
   end
 
   def gen_new_module_rts(header,body) do
-
+    IO.puts "gen_new_module"
     new_body =  case body do
       {:__block__, [], definitions} ->  gen_new_definitions(definitions)
       _   -> gen_new_definitions([body])
