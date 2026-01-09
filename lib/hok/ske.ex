@@ -31,13 +31,13 @@ Hok.defmodule_rts Ske do
       numberOfBlocks = blocksPerGrid
 
       case type do
-        {:f,32} -> cas = Hok.phok (fn (x,y,z) -> cas_float(x,y,z) end)
+        {:f,32} -> cas = Hok.hok (fn (x,y,z) -> cas_float(x,y,z) end)
             Hok.spawn_rts(&Ske.reduce_kernel/6,{numberOfBlocks,1,1},{threadsPerBlock,1,1},[ref,result_gpu, initial, size, cas, f])
 
-        {:f,64} -> cas = Hok.phok (fn (x,y,z) -> cas_double(x,y,z) end)
+        {:f,64} -> cas = Hok.hok (fn (x,y,z) -> cas_double(x,y,z) end)
             Hok.spawn_rts(&Ske.reduce_kernel/6,{numberOfBlocks,1,1},{threadsPerBlock,1,1},[ref,result_gpu, initial, size, cas, f])
 
-        {:s,32} -> cas = Hok.phok (fn (x,y,z) -> cas_int(x,y,z) end)
+        {:s,32} -> cas = Hok.hok (fn (x,y,z) -> cas_int(x,y,z) end)
             Hok.spawn_rts(&Ske.reduce_kernel/6,{numberOfBlocks,1,1},{threadsPerBlock,1,1},[ref,result_gpu, initial, size, cas, f])
 
         x -> raise "new_gnx: type #{x} not suported"
