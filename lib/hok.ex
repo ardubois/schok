@@ -91,7 +91,7 @@ defmodule Hok do
     def process_module(module_name,body) do
 
       # initiate server that collects types and asts
-      IO.inpect "io"
+      IO.inspect "io"
       start_module_server()
        
       _defs=case body do
