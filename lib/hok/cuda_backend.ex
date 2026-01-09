@@ -19,7 +19,6 @@ defmodule Hok.CudaBackend do
   end
 
   def gen_new_module_rts(header,body) do
-    IO.puts "gen_new_module"
     new_body =  case body do
       {:__block__, [], definitions} ->  gen_new_definitions(definitions)
       _   -> gen_new_definitions([body])
@@ -31,6 +30,7 @@ defmodule Hok.CudaBackend do
 
   using = quote do
     defmacro __using__(_opts) do
+      IO.puts "using"
       Hok.process_module(unquote(module_name),unquote(Macro.escape body))
     end
   end
