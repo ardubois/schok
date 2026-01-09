@@ -1,4 +1,6 @@
+require Hok
 require Ske
+
 
 [arg] = System.argv()
 
