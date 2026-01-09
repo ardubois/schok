@@ -18,6 +18,31 @@ defmodule Hok.CudaBackend do
 
   end
 
+  def gen_new_module_rts(header,body) do
+
+    new_body =  case body do
+      {:__block__, [], definitions} ->  gen_new_definitions(definitions)
+      _   -> gen_new_definitions([body])
+    end
+
+    {:__aliases__, _, [module_name]} = header
+
+#IO.inspect body
+
+  using = quote do
+    defmacro __using__(_opts) do
+      Hok.process_module(unquote(module_name),unquote(Macro.escape body))
+    end
+  end
+new_module = quote do
+  defmodule (unquote(header)) do
+   unquote([using|new_body])
+   end
+end
+
+new_module
+
+  end
   defp gen_new_definitions([]), do: []
   defp gen_new_definitions([{:deft,_,_para}|t]) do
 

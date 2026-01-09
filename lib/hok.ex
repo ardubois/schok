@@ -80,7 +80,7 @@ defmodule Hok do
       #raise "hell"
       process_module(module_name,body)
   
-      ast_new_module = Hok.CudaBackend.gen_new_module(header,body)
+      ast_new_module = Hok.CudaBackend.gen_new_module_rts(header,body)
      # IO.inspect ast_new_module
       ast_new_module
   
