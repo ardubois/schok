@@ -1,5 +1,5 @@
 require Hok
-require Ske
+use Ske
 
 
 [arg] = System.argv()
