@@ -91,9 +91,9 @@ defmodule Hok do
     def process_module(module_name,body) do
 
       # initiate server that collects types and asts
-      IO.inspect "ioooooooooooooooooooo"
       start_module_server()
-       
+      IO.inspect "ioooooooooooooooooooo"
+
       _defs=case body do
           {:__block__, [], definitions} ->  add_module_to_server(module_name,definitions)
           _   -> add_module_to_server(module_name,[body])
@@ -115,6 +115,7 @@ defmodule Hok do
       end  
     end
     def add_module_to_server(name,module) do
+      IO.puts "aaaaaaaaaaaaaaahhhhhhhhhhhhh"
       send(:module_server,{:add_module,name,module})
     end
     def add_module_to_app(module_name) do
