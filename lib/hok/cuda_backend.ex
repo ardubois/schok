@@ -32,6 +32,7 @@ defmodule Hok.CudaBackend do
     defmacro __using__(_opts) do
       IO.puts "using"
       Hok.process_module(unquote(module_name),unquote(Macro.escape body))
+      :ok
     end
   end
 new_module = quote do
