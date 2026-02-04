@@ -28,7 +28,7 @@ Hok.defmodule_rts Ske do
               [input,result_gpu,size, f])
     result_gpu
   end
-  deft map_ker (arr a) ~> (arr b) ~> [a ~> b] ~> unit
+  deft map_ker (arr a) ~> (arr b) ~> integer ~> [a ~> b] ~> unit
   defk map_ker(a1,a2,size,f) do
       index = blockIdx.x * blockDim.x + threadIdx.x
       stride = blockDim.x * gridDim.x
