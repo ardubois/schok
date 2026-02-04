@@ -75,7 +75,7 @@ defmodule Hok do
     #  IO.inspect header
       #IO.inspect body
       {:__aliases__, _, [module_name]} = header
-      #IO.puts "ioooooooooooooooooooooooooooooooooo"
+      IO.puts "ioooooooooooooooooooooooooooooooooo"
       #IO.inspect module_name
       #raise "hell"
       process_module(module_name,body)
