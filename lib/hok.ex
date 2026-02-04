@@ -115,8 +115,9 @@ defmodule Hok do
       end  
     end
     def add_module_to_server(name,module) do
-      IO.puts "aaaaaaaaaaaaaaahhhhhhhhhhhhh"
       send(:module_server,{:add_module,name,module})
+      IO.puts "aaaaaaaaaaaaaaahhhhhhhhhhhhh"
+
     end
     def add_module_to_app(module_name) do
       send(:module_server,{:add_module_to_app,module_name})
