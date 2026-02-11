@@ -42,7 +42,7 @@ Hok.defmodule_rts Julia do
     end
     return 1
   end
-  deft julia_function (arr integer) ~> integer ~> integer ~> integer ~> unit  
+  deft julia_function (arr integer) ~> integer ~> integer ~> integer ~> unit
   defd julia_function(ptr,x,y,dim) do
     offset = x + y * dim # gridDim.x
     juliaValue = julia(x,y,dim)
@@ -89,10 +89,10 @@ _image = result_gpu
   |> Julia.mapgen2D_step_xy_1para_noret(dim,dim, &Julia.julia_function/4)
   |> Hok.get_gnx
 
-Hok.end_hok  
+Hok.end_hok
 
 next = System.monotonic_time()
 
-IO.puts "PolyHok\t#{dim}\t#{System.convert_time_unit(next-prev,:native,:millisecond)}"
+IO.puts "Hok\t#{dim}\t#{System.convert_time_unit(next-prev,:native,:millisecond)}"
 
 #BMP.gen_bmp_int('juliaske.bmp',dim,image)
