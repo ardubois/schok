@@ -81,9 +81,9 @@ dim = m
 
 #values_per_pixel = 4
 
-result_gpu = Hok.new_gnx(dim*dim,4,{:s,32})
-
 prev = System.monotonic_time()
+
+result_gpu = Hok.new_gnx(dim*dim,4,{:s,32})
 
 _image = result_gpu
   |> Julia.mapgen2D_step_xy_1para_noret(dim,dim, &Julia.julia_function/4)
