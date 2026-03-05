@@ -31,7 +31,7 @@ gnx3= Hok.new_gnx(n, type: {:f,32})
 threadsPerBlock = 128;
 numberOfBlocks = div(n + threadsPerBlock - 1, threadsPerBlock)
 
-Hok.spawn_rts(&Saxpy.saxpy_kernel/4,{numberOfBlocks,1,1},{threadsPerBlock,1,1},[gm1,gm2,gmr,n])
+Hok.spawn_rts(&Saxpy.saxpy_kernel/4,{numberOfBlocks,1,1},{threadsPerBlock,1,1},[gnx1,gnx2,gnx3,n])
 
 
 result = Hok.get_gmatrex(gmr)
