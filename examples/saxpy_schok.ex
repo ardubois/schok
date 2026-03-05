@@ -21,9 +21,10 @@ n = 10000000
 
 #mat1 = Matrex.new(list)
 #mat2 = Matrex.new(list)
-
-a = Nx.tensor(Enum.to_list(1..n),type: {:f, 32})
-b = Nx.tensor(Enum.to_list(1..n),type: {:f, 32})
+a = Hok.new_nx_from_function(1,n,{:f,32},fn -> 1 end )
+b = Hok.new_nx_from_function(1,n,{:f,32},fn -> 1 end )
+#a = Nx.tensor(Enum.to_list(1..1),type: {:f, 32})
+#b = Nx.tensor(Enum.to_list(1..1),type: {:f, 32})
 
 gnx1= Hok.new_gnx(a)
 gnx2 = Hok.new_gnx(b)
