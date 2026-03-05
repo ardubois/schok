@@ -1,6 +1,6 @@
 require Hok
 
-Hok.defmodule_rts Saxpy do
+Hok.defmodule Saxpy do
 
 defk saxpy_kernel(a,b,c,n) do
    index = blockIdx.x * blockDim.x + threadIdx.x;
@@ -12,31 +12,26 @@ defk saxpy_kernel(a,b,c,n) do
  end
 end
 
-Hok.include_rts [Saxpy]
+Hok.include [Saxpy]
 
 n = 10000000
 
-#list = [Enum.to_list(1..n)]
+list = [Enum.to_list(1..n)]
 
-#mat1 = Matrex.new(list)
-#mat2 = Matrex.new(list)
+mat1 = Matrex.new(list)
+mat2 = Matrex.new(list)
 
-a = Nx.tensor(Enum.to_list(1..n),type: {:f, 32})
-b = Nx.tensor(Enum.to_list(1..n),type: {:f, 32})
-
-gnx1= Hok.new_gnx(a)
-gnx2 = Hok.new_gnx(b)
-gnx3= Hok.new_gnx(n, type: {:f,32})
+gm1 = Hok.new_gmatrex(mat1)
+gm2 = Hok.new_gmatrex(mat2)
+gmr = Hok.new_gmatrex(1,n)
 
 threadsPerBlock = 128;
 numberOfBlocks = div(n + threadsPerBlock - 1, threadsPerBlock)
 
-Hok.spawn_rts(&Saxpy.saxpy_kernel/4,{numberOfBlocks,1,1},{threadsPerBlock,1,1},[gm1,gm2,gmr,n])
+Hok.spawn(&Saxpy.saxpy_kernel/4,{numberOfBlocks,1,1},{threadsPerBlock,1,1},[gm1,gm2,gmr,n])
+
 
 
 result = Hok.get_gmatrex(gmr)
-
-Hok.end_hok 
-
 
 IO.inspect result

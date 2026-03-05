@@ -12,7 +12,7 @@ defk saxpy_kernel(a,b,c,n) do
  end
 end
 
-Hok.include [Saxpy]
+Hok.include_rts [Saxpy]
 
 n = 10000000
 
