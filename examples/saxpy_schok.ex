@@ -28,7 +28,7 @@ b = Nx.tensor(Enum.to_list(1..n),type: {:f, 32})
 
 gnx1= Hok.new_gnx(a)
 gnx2 = Hok.new_gnx(b)
-gnxr= Hok.new_gnx({1,n}, {:s,32})
+gnxr= Hok.new_gnx({1,n}, {:f,32})
 
 threadsPerBlock = 128;
 numberOfBlocks = div(n + threadsPerBlock - 1, threadsPerBlock)
