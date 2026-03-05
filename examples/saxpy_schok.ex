@@ -26,15 +26,15 @@ b = Nx.tensor(Enum.to_list(1..n),type: {:f, 32})
 
 gnx1= Hok.new_gnx(a)
 gnx2 = Hok.new_gnx(b)
-gnx3= Hok.new_gnx(n, type: {:f,32})
+gnxr= Hok.new_gnx(n, type: {:f,32})
 
 threadsPerBlock = 128;
 numberOfBlocks = div(n + threadsPerBlock - 1, threadsPerBlock)
 
-Hok.spawn_rts(&Saxpy.saxpy_kernel/4,{numberOfBlocks,1,1},{threadsPerBlock,1,1},[gnx1,gnx2,gnx3,n])
+Hok.spawn_rts(&Saxpy.saxpy_kernel/4,{numberOfBlocks,1,1},{threadsPerBlock,1,1},[gnx1,gnx2,gnxr,n])
 
 
-result = Hok.get_gmatrex(gmr)
+result = Hok.get_gmatrex(gnxr)
 
 Hok.end_hok 
 
