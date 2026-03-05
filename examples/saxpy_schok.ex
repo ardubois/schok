@@ -13,7 +13,7 @@ defk saxpy_kernel(a,b,c,n) do
 end
 
 Hok.include_rts [Saxpy]
-Hok.set_default_type(%{default:  :float})
+#Hok.set_default_type(%{default:  :float})
 
 n = 10000000
 
