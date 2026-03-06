@@ -10,10 +10,10 @@ Hok.defmodule_rts Mapp do
       end
       def map2(t1,t2,func) do
     
-        {l,c} = Hok.get_shape_gnx(t1)
+        shape = Hok.get_shape_gnx(t1)
         type = Hok.get_type_gnx(t2)
-         size = l*c
-         result_gpu = Hok.new_gnx(l,c, type)
+         size = Tuple.product(shape)
+         result_gpu = Hok.new_gnx(shape, type)
     
           threadsPerBlock = 256;
           numberOfBlocks = div(size + threadsPerBlock - 1, threadsPerBlock)
