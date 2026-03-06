@@ -1,3 +1,5 @@
+require Hok
+
 Hok.defmodule_rts Map do
       deft map_2kernel (arr a) ~> (arr b) ~> (arr c) ~> integer ~> [a ~> b ~> c] 
       defk map_2kernel(a1,a2,a3,size,f) do
