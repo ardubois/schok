@@ -224,14 +224,11 @@ defmodule Hok do
       end            
       if(is_tuple imp) do
 
-             IO.inspect imp
-             raise "hell"
         {module,type} = imp
+        {_,_,[module]} = module
+        add_module_to_app(module)      
         
-          # module
-        
-        
-        
+            
         
         type = cond do
           is_atom(type) -> type
