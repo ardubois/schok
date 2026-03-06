@@ -223,7 +223,32 @@ defmodule Hok do
                   |> Enum.map(fn module -> add_module_to_app(module) end)
       end            
       if(is_tuple imp) do
-        IO.inspect imp
+
+             IO.inspect imp
+             raise "hell"
+        {module,type} = imp
+        
+           module
+        
+        
+        
+        
+        type = cond do
+          is_atom(type) -> type
+          true ->   {real_map, _binding} = Code.eval_quoted(type)
+                 real_map 
+        end
+       # IO.puts "compiling......."
+        id = get_module_id()
+        set_default_type_server({id,type})
+        
+        #IO.inspect app
+         
+          quote do
+           Hok.set_current_id(unquote(id))
+          end
+      
+
       end            
   
     end
