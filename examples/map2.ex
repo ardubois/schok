@@ -18,7 +18,7 @@ Hok.defmodule_rts Mapp do
           threadsPerBlock = 256;
           numberOfBlocks = div(size + threadsPerBlock - 1, threadsPerBlock)
     
-          Hok.spawn_rts(&DP.map_2kernel/5,{numberOfBlocks,1,1},{threadsPerBlock,1,1},[t1,t2,result_gpu,size,func])
+          Hok.spawn_rts(&Mapp.map_2kernel/5,{numberOfBlocks,1,1},{threadsPerBlock,1,1},[t1,t2,result_gpu,size,func])
     
     
           result_gpu
@@ -37,7 +37,7 @@ n = 10000000
 #mat1 = Matrex.new(list)
 #mat2 = Matrex.new(list)
 a = Hok.new_nx_from_function(1,n,{:f,32},fn -> 1 end )
-b = Hok.new_nx_from_function(1,n,{:s,32},fn -> 1 end )
+b = Hok.new_nx_from_function(1,n,{:f,32},fn -> 1 end )
 
 gnx1= Hok.new_gnx(a)
 gnx2 = Hok.new_gnx(b)
