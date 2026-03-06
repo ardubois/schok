@@ -27,7 +27,8 @@ end
 
 
 Hok.include_rts [Mapp]
-Hok.set_default_type(%{default:  :float})
+#Hok.set_default_type(%{default:  :float})
+Hok.set_default_type(%{default:  :float, a: :float, b: :float, c: :float })
 
 n = 10000000
 
