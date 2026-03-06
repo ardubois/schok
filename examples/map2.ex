@@ -1,6 +1,6 @@
 require Hok
 
-Hok.defmodule_rts Map do
+Hok.defmodule_rts Mapp do
       deft map_2kernel (arr a) ~> (arr b) ~> (arr c) ~> integer ~> [a ~> b ~> c] 
       defk map_2kernel(a1,a2,a3,size,f) do
         id = blockIdx.x * blockDim.x + threadIdx.x
@@ -26,7 +26,7 @@ Hok.defmodule_rts Map do
 end   
 
 
-Hok.include_rts [Map]
+Hok.include_rts [Mapp]
 Hok.set_default_type(%{default:  :float})
 
 n = 10000000
@@ -38,7 +38,7 @@ n = 10000000
 a = Hok.new_nx_from_function(1,n,{:f,32},fn -> 1 end )
 b = Hok.new_nx_from_function(1,n,{:s,32},fn -> 1 end )
 
-c = Map.map2(a,b, Hok.hok_rts fn (x,y) -> x+y end)
+c = Mapp.map2(a,b, Hok.hok_rts fn (x,y) -> x+y end)
 
 result = Hok.get_gnx(c)
 
