@@ -45,4 +45,7 @@ c = Mapp.map2(gnx1,gnx2, Hok.hok_rts fn (x,y) -> x+y end)
 
 result = Hok.get_gnx(c)
 
+Hok.end_hok 
+
+
 IO.inspect result
