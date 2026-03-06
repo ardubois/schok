@@ -27,7 +27,7 @@ end
 
 
 #Hok.include_rts [Mapp]
-Hok.include_rts {Mapp, %{default:  :float, a: :float, b: :float, c: :float }}
+Hok.include_rts {Mapp, %{ a: :float, b: :float, c: :float }}
 #Hok.set_default_type(%{default:  :float})
 #Hok.set_default_type(%{default:  :float, a: :float, b: :float, c: :float })
 
