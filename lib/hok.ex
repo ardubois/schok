@@ -221,6 +221,7 @@ defmodule Hok do
             imp
                   |> Enum.map(fn {_,_,[module]} -> module end)
                   |> Enum.map(fn module -> add_module_to_app(module) end)
+      end            
       if(is_tuple imp) do
         IO.inspect imp
       end            
