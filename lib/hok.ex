@@ -215,11 +215,15 @@ defmodule Hok do
          end
     end
     
-    defmacro include_rts(inc_list) do
+    defmacro include_rts(imp) do
       #IO.inspect inc_list
-      inc_list
+      if(is_list imp) do
+            imp
                   |> Enum.map(fn {_,_,[module]} -> module end)
                   |> Enum.map(fn module -> add_module_to_app(module) end)
+      if(is_tuple imp) do
+        IO.inspect imp
+      end            
   
     end
     def spawn_rts(k,t,b,l) do #when is_function(k) do
