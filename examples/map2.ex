@@ -36,7 +36,7 @@ n = 10000000
 a = Hok.new_nx_from_function(1,n,{:f,32},fn -> 1 end )
 b = Hok.new_nx_from_function(1,n,{:s,32},fn -> 1 end )
 
-c = Map.map2(a,b, Hok.hok_rts fn x,y -> x+yend)
+c = Map.map2(a,b, Hok.hok_rts fn (x,y) -> x+y end)
 
 result = Hok.get_gnx(c)
 
