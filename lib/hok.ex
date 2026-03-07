@@ -50,16 +50,25 @@ defmodule Hok do
         |> Hok.get_gnx
     end
   
-
-  defmacro gpufor({:<-,_, [var1, {:..,_, [_b1, e1]}]}, arr1, arr2,do: body) do
-       r=      quote do: Comp.comp_xy_2arrays(unquote(arr1), unquote(arr2), unquote(e1),
-                                          Hok.hok_rts (fn (unquote(arr1),
-                                                       unquote(arr2),
-                                                       unquote(var1)) -> (unquote body) end))
-      #IO.inspect r
-       #raise "hell"
-       r
+    defmacro gpu_for({:<-,_, [var1, {:..,_, [_b1, e1]}]}, arr1, arr2,do: body) do
+      r=      quote do: PMap.comp_func(unquote(arr1), unquote(arr2), unquote(e1),
+                                         PolyHok.phok_rts (fn (unquote(arr1),
+                                                      unquote(arr2),
+                                                      unquote(var1)) -> (unquote body) end))
+     #IO.inspect r
+      #raise "hell"
+      
   end
+
+  #defmacro gpufor({:<-,_, [var1, {:..,_, [_b1, e1]}]}, arr1, arr2,do: body) do
+   #    r=      quote do: Comp.comp_xy_2arrays(unquote(arr1), unquote(arr2), unquote(e1),
+   #                                       Hok.hok_rts (fn (unquote(arr1),
+   #                                                    unquote(arr2),
+   #                                                    unquote(var1)) -> (unquote body) end))
+   #   #IO.inspect r
+   #    #raise "hell"
+   #    r
+   #end
 
   defmacro gpufor({:<-,_, [var1, {:..,_, [_b1, e1]}]}, {:<-,_, [var2, {:..,_, [_b2, e2]}]},arr1,arr2, par3, do: body) do
        r=      quote do: MM.comp2xy2D1p(unquote(arr1), unquote(arr2), unquote(par3), unquote(e1), unquote(e2),
