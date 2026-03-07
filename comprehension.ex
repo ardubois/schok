@@ -4,7 +4,7 @@ Hok.defmodule_rts Comp do
   #defh soma(x,y) do
   #  x + y
   #end
-
+  deft map_kernel (arr a) ~> (arr b) ~> integer ~> [a ~> b] ~> unit
   defk map_kernel(a1,r,size,f) do
     id = blockIdx.x * blockDim.x + threadIdx.x
     if(id < size) do
@@ -35,8 +35,9 @@ Hok.defmodule_rts Comp do
 def replicate(n, x), do: (for _ <- 1..n, do: x)
 end
 
-Hok.include_rts [Comp]
-Hok.set_default_type(%{default:  :float})
+#Hok.include_rts [Comp]
+Hok.include_rts {Comp, %{ a: :float, b: :float }}
+#Hok.set_default_type(%{default:  :float})
 #Hok.include_rts {Comp, %{ default: :float}}
 
 size = 10000
