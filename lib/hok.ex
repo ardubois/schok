@@ -51,7 +51,7 @@ defmodule Hok do
     end
   
     defmacro gpu_for({:<-,_, [var1, {:..,_, [_b1, e1]}]}, arr1, arr2,do: body) do
-      r=      quote do: PMap.comp_func(unquote(arr1), unquote(arr2), unquote(e1),
+      r=      quote do: Mapp.comp_func(unquote(arr1), unquote(arr2), unquote(e1),
                                          Hok.hok_rts (fn (unquote(arr1),
                                                       unquote(arr2),
                                                       unquote(var1)) -> (unquote body) end))
