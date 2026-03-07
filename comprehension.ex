@@ -25,7 +25,7 @@ Hok.defmodule_rts Comp do
     numberOfBlocks = div(size + threadsPerBlock - 1, threadsPerBlock)
     Hok.spawn_rts(&Comp.map_kernel/4,{numberOfBlocks,1,1},{threadsPerBlock,1,1},[array_gpu,result_gpu,size,func])
 
-    Comp.map(array_gpu, result_gpu, size,func)
+   # Comp.map(array_gpu, result_gpu, size,func)
 
     r_gpu = Hok.get_gnx(result_gpu)
     r_gpu
