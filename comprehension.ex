@@ -39,7 +39,7 @@ Hok.include_rts {Comp, %{ default: :float}}
 
 size = 10000
 
-array = Nx.tensor(Enum.to_list(1..n),type: {:f, 32})
+array = Nx.tensor(Enum.to_list(1..size),type: {:f, 32})
 
 
 prev = System.monotonic_time()
