@@ -28,7 +28,7 @@ Hok.defmodule_rts Comp do
 
     Comp.map(array_gpu, result_gpu, size,func)
 
-    r_gpu = Hok.get_gmatrex(result_gpu)
+    r_gpu = Hok.get_gnx(result_gpu)
     r_gpu
   end
 
