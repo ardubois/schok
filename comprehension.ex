@@ -19,8 +19,8 @@ Hok.defmodule_rts Comp do
 
   def comp(array,func) do
 
-    shape = Hok.get_shape_gnx(ref)
-    type = Hok.get_type_gnx(t2)
+    shape = Hok.get_shape_gnx(array)
+    type = Hok.get_type_gnx(array)
     size = Tuple.product(shape)
     result_gpu = Hok.new_gnx(shape, type)
     array_gpu = Hok.new_gnx(array)
