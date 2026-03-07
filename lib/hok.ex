@@ -57,7 +57,7 @@ defmodule Hok do
                                                       unquote(var1)) -> (unquote body) end))
      #IO.inspect r
       #raise "hell"
-      
+     r 
   end
 
   #defmacro gpufor({:<-,_, [var1, {:..,_, [_b1, e1]}]}, arr1, arr2,do: body) do
