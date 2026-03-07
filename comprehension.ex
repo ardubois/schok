@@ -1,5 +1,5 @@
 require Hok
-Hok.defmodule Comp do
+Hok.defmodule_rts Comp do
 
   #defh soma(x,y) do
   #  x + y
@@ -18,10 +18,12 @@ Hok.defmodule Comp do
   end
 
   def comp(array,func) do
-    {_l,size} = Matrex.size(array)
 
-    result_gpu =Hok.new_gmatrex(1,size)
-    array_gpu = Hok.new_gmatrex(array)
+    shape = Hok.get_shape_gnx(ref)
+    type = Hok.get_type_gnx(t2)
+    size = Tuple.product(shape)
+    result_gpu = Hok.new_gnx(shape, type)
+    array_gpu = Hok.new_gnx(array)
 
     Comp.map(array_gpu, result_gpu, size,func)
 
@@ -32,12 +34,12 @@ Hok.defmodule Comp do
 def replicate(n, x), do: (for _ <- 1..n, do: x)
 end
 
-Hok.include [Comp]
-
+#Hok.include [Comp]
+Hok.include_rts {Comp, %{ default: :float}}
 
 size = 10000
 
-array = Matrex.new([Comp.replicate(size,1)])
+array = Nx.tensor(Enum.to_list(1..n),type: {:f, 32})
 
 
 prev = System.monotonic_time()
@@ -45,6 +47,8 @@ prev = System.monotonic_time()
 #result = Comp.comp(array, Hok.hok (fn (a) ->  a + 10.0 end))
 
 result = Hok.gpufor x<- array,  do: x + 10.0
+
+Hok.end_hok
 
 next = System.monotonic_time()
 
