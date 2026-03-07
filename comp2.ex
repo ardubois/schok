@@ -23,7 +23,7 @@ Hok.defmodule_rts Mapp do
     threadsPerBlock = 128;
     numberOfBlocks = div(size + threadsPerBlock - 1, threadsPerBlock)
 
-    Hok.spawn_rts(&PMap.map_ker/4,
+    Hok.spawn_rts(&Mapp.map_ker/4,
               {numberOfBlocks,1,1},
               {threadsPerBlock,1,1},
               [input,result_gpu,size, f])
@@ -48,7 +48,7 @@ Hok.defmodule_rts Mapp do
     threadsPerBlock = 128;
     numberOfBlocks = div(size + threadsPerBlock - 1, threadsPerBlock)
 
-    Hok.spawn_rts(&PMap.map_comp/5,
+    Hok.spawn_rts(&Mapp.map_comp/5,
               {numberOfBlocks,1,1},
               {threadsPerBlock,1,1},
               [d_arr1,d_arr2,result_gpu,size, f])
