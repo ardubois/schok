@@ -334,7 +334,7 @@ end
       
     app = Hok.get_app()
     code = Hok.CudaBackend.compile_module(:app, app, type)
-    IO.puts code
+    #IO.puts code
     module_name = "Elixir.app_#{to_string(id)}"
     # IO.puts "Module name: #{module_name}"
  
