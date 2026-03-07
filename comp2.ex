@@ -1,7 +1,7 @@
 require Hok
 
 
-Hok.defmodule_rts PMapp do
+Hok.defmodule_rts Mapp do
   deft map_ker (arr a) ~> (arr b) ~> integer ~> [a ~> b ] ~> unit
   defk map_ker(a1,a2,size,f) do
     index = blockIdx.x * blockDim.x + threadIdx.x
