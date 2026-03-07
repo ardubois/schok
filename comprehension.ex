@@ -27,8 +27,8 @@ Hok.defmodule_rts Comp do
 
    # Comp.map(array_gpu, result_gpu, size,func)
 
-    r_gpu = Hok.get_gnx(result_gpu)
-    r_gpu
+    result_gpu
+    
   end
 
 def replicate(n, x), do: (for _ <- 1..n, do: x)

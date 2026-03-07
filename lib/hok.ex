@@ -38,9 +38,18 @@ defmodule Hok do
     result
   end
 
+  #defmacro gpufor({:<-, _ ,[var,tensor]},do: b)  do
+  #    quote do: Comp.map(unquote(tensor), Hok.hok_rts (fn (unquote(var)) -> (unquote b) end))
+  #end
+
   defmacro gpufor({:<-, _ ,[var,tensor]},do: b)  do
-      quote do: Comp.map(unquote(tensor), Hok.hok_rts (fn (unquote(var)) -> (unquote b) end))
-  end
+      quote do:
+      unquote(tensor)
+        |> Hok.new_gnx
+        |> Comp.map(Hok.hok_rts (fn (unquote(var)) -> (unquote b) end))
+        |> Hok.get_gnx
+    end
+  
 
   defmacro gpufor({:<-,_, [var1, {:..,_, [_b1, e1]}]}, arr1, arr2,do: body) do
        r=      quote do: Comp.comp_xy_2arrays(unquote(arr1), unquote(arr2), unquote(e1),
