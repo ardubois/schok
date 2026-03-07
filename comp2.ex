@@ -64,9 +64,9 @@ b = Nx.tensor(Enum.to_list(1..1000),type: {:s, 32})
 
 size = Tuple.product(Nx.shape(a))
 
-host_resp = Hok.gpufor n <- a,  do: n * n
+#host_resp = Hok.gpufor n <- a,  do: n * n
 
-IO.inspect host_resp
+#IO.inspect host_resp
 
 host_resp = Hok.gpu_for i <- 0..size, a, b, do:  2 * a[i] + b[i]
 
