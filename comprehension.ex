@@ -11,13 +11,8 @@ Hok.defmodule_rts Comp do
       r[id] = f(a1[id])
     end
   end
-  def map(t1,t2,size,func) do
-      threadsPerBlock = 128;
-      numberOfBlocks = div(size + threadsPerBlock - 1, threadsPerBlock)
-      Hok.spawn_rts(&Comp.map_kernel/4,{numberOfBlocks,1,1},{threadsPerBlock,1,1},[t1,t2,size,func])
-  end
 
-  def comp(array,func) do
+  def map(array,func) do
 
     array_gpu = Hok.new_gnx(array)
 
@@ -25,6 +20,10 @@ Hok.defmodule_rts Comp do
     type = Hok.get_type_gnx(array_gpu)
     size = Tuple.product(shape)
     result_gpu = Hok.new_gnx(shape, type)
+
+    threadsPerBlock = 128;
+    numberOfBlocks = div(size + threadsPerBlock - 1, threadsPerBlock)
+    Hok.spawn_rts(&Comp.map_kernel/4,{numberOfBlocks,1,1},{threadsPerBlock,1,1},[array_gpu,result_gpu,size,func])
 
     Comp.map(array_gpu, result_gpu, size,func)
 
