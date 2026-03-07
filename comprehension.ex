@@ -34,8 +34,9 @@ Hok.defmodule_rts Comp do
 def replicate(n, x), do: (for _ <- 1..n, do: x)
 end
 
-#Hok.include [Comp]
-Hok.include_rts {Comp, %{ default: :float}}
+Hok.include_rts [Comp]
+Hok.set_default_type(%{default:  :float})
+#Hok.include_rts {Comp, %{ default: :float}}
 
 size = 10000
 
