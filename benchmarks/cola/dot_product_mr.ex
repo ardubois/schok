@@ -104,8 +104,11 @@ include CAS
     temp = initial
     r_map = initial
     while (tid < n) do
-      r_map = g(a[tid],b[tid])
-      temp = f(r_map, temp)
+      ## r_map = g(a[tid],b[tid])
+      ##temp = f(r_map, temp)
+      r_map = (a[tid]*b[tid])
+      temp = (r_map+ temp)
+     
       tid = blockDim.x * gridDim.x + tid
     end
 
@@ -117,7 +120,8 @@ include CAS
     while (i != 0 ) do  ###&& tid < n) do
       #tid = blockDim.x * gridDim.x + tid
       if (cacheIndex < i) do
-        cache[cacheIndex] = f(cache[cacheIndex + i] , cache[cacheIndex])
+        ##cache[cacheIndex] = f(cache[cacheIndex + i] , cache[cacheIndex])
+        cache[cacheIndex] = (cache[cacheIndex + i] + cache[cacheIndex])
       end
 
     __syncthreads()
@@ -126,7 +130,8 @@ include CAS
 
   if (cacheIndex == 0) do
     current_value = ref4[0]
-    while(!(current_value == atomic_cas(ref4,current_value,f(cache[0],current_value)))) do
+    ##while(!(current_value == atomic_cas(ref4,current_value,f(cache[0],current_value)))) do
+     while(!(current_value == atomic_cas(ref4,current_value,(cache[0]+current_value)))) do 
       current_value = ref4[0]
     end
   end
