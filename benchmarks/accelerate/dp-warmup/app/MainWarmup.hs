@@ -73,7 +73,8 @@ main = do
   -- Timed run: transfer + compute + transfer back, no compilation.
   t0 <- getCurrentTime
   let result = dot vecA vecB
-  _ <- evaluate (force result)
+  --_ <- evaluate (force result)
+  _ <- evaluate (A.indexArray result Z)
   t1 <- getCurrentTime
 
   let elapsedMs = realToFrac (diffUTCTime t1 t0) * 1000 :: Double
