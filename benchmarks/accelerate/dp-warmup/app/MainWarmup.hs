@@ -74,7 +74,8 @@ main = do
   t0 <- getCurrentTime
   let result = dot vecA vecB
   --_ <- evaluate (force result)
-  _ <- evaluate (A.indexArray result Z)
+  --_ <- evaluate (A.indexArray result Z)
+  __ <- evaluate (head . toList result)
   t1 <- getCurrentTime
 
   let elapsedMs = realToFrac (diffUTCTime t1 t0) * 1000 :: Double
