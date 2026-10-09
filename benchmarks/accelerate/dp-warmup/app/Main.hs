@@ -67,8 +67,8 @@ main = do
   let vecA = A.fromList (Z :. n) asL :: Vector Float
       vecB = A.fromList (Z :. n) bsL :: Vector Float
   -- Force the list -> Array conversion now, so it is not counted below.
-  _ <- evaluate vecA
-  _ <- evaluate vecB
+  _ <- evaluate (force vecA)
+  _ <- evaluate (force vecB)
 
   -- Timed region: this is the single execution. It covers everything
   -- PTX.run does internally for this program -- host->device transfer,
